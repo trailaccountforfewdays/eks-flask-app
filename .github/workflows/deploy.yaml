@@ -36,7 +36,8 @@ jobs:
         uses: aws-actions/configure-aws-credentials@v4
         with:
           role-to-assume: arn:aws:iam::777035566043:role/github-actions-eks-deploy
-          aws-region: ${{ env.AWS_REGION }}
+          aws-region: us-east-1
+          audience: sts.amazonaws.com
 
       - name: Update kubeconfig
         run: aws eks update-kubeconfig --name $CLUSTER_NAME --region $AWS_REGION
